@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Welcome to Stack Underflow</h1>
+
+        <!-- List of Recent Questions -->
+        <div class="question-list">
+            <h2>Recent Questions</h2>
+            <ul>
+                {% for question in questions %}
+                    <li>
+                        <a href="{% url 'question_detail' question.id %}">{{ question.title }}</a>
+                        <p>{{ question.user.username }} | {{ question.created_at }}</p>
+                    </li>
+                {% empty %}
+                    <p>No questions available.</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
